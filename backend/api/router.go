@@ -6,8 +6,6 @@ import (
 	"os"
 
 	"github.com/caracal/api/controllers/food"
-	"github.com/caracal/api/controllers/message"
-	"github.com/caracal/api/controllers/program"
 	"github.com/caracal/api/controllers/user"
 	"github.com/caracal/database"
 	"github.com/gin-gonic/gin"
@@ -59,10 +57,6 @@ func StartRouter(db *database.Repository) {
 		APIRouter.GET("/foods/", foodCtrl.GetFoods)
 		APIRouter.POST("/foods/", foodCtrl.AddFood)
 		APIRouter.DELETE("/foods/:id", foodCtrl.DeleteFood)
-		/*** PROGRAM ROUTES ***/
-		programCtrl := program.NewProgramController(db)
-		APIRouter.POST("/programs", programCtrl.CreateProgram)
-		APIRouter.GET("/clients/:client_id/programs", programCtrl.GetProgramsByClient)
 
 		/*** USER ROUTES ***/
 		userCtrl := user.NewUserController(db)
@@ -70,11 +64,6 @@ func StartRouter(db *database.Repository) {
 		APIRouter.POST("/login", userCtrl.Login)
 		APIRouter.GET("/users/:id", userCtrl.GetUserByID)
 		APIRouter.GET("/users/email/:email", userCtrl.GetUserByEmail)
-
-		/*** MESSAGE ROUTES ***/
-		chatCtrl := message.NewChatController(db)
-		APIRouter.GET("/ws", chatCtrl.ServeWs)
-
 	}
 
 	router.Run(fmt.Sprintf("%s:%s", host, port))

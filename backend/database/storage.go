@@ -36,7 +36,7 @@ func NewConnection(config *DBConfig) (Repository, error) {
 	if err != nil {
 		return Repository{}, err
 	}
-	err = db.AutoMigrate(&models.Food{}, &models.User{}, &models.Message{}, &models.Program{})
+	err = db.AutoMigrate(&models.Food{}, &models.User{})
 	if err != nil {
 		return Repository{}, fmt.Errorf("failed to migrate database: %w", err)
 	}
