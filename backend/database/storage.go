@@ -31,15 +31,17 @@ func NewConnection(config *DBConfig) (Repository, error) {
 		config.Dbname,
 		config.Port,
 		config.Sslmode)
-	db, err := gorm.Open(postgres.Open(dbFile), &gorm.Config{})
 
+	db, err := gorm.Open(postgres.Open(dbFile), &gorm.Config{})
 	if err != nil {
 		return Repository{}, err
 	}
-	err = db.AutoMigrate(&models.Food{}, &models.User{})
+
+	err = db.AutoMigrate(&models.User{})
 	if err != nil {
 		return Repository{}, fmt.Errorf("failed to migrate database: %w", err)
 	}
+
 	return Repository{
 		DB: db,
 	}, nil
