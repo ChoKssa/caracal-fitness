@@ -1,34 +1,58 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, Text } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { useState } from "react";
+import Login from "@/components/navigation/Login";
+import Register from "@/components/navigation/Register";
+import { ThemedView } from "@/components/ui/ThemedView";
+import { ThemedText } from "@/components/ui/ThemedText";
+
+const { height } = Dimensions.get("window");
 
 export default function LoginScreen() {
+	const [activePage, setActivePage] = useState<"login" | "register">(
+		"register"
+	);
 	return (
-		<ParallaxScrollView
-			headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
-			headerImage={
-				<Ionicons
-					size={310}
-					name="code-slash"
-					style={styles.headerImage}
-				/>
-			}
+		<ThemedView
+			style={[
+				styles.container,
+				{
+					height: height,
+				},
+			]}
 		>
-			<Text>Login page</Text>
-		</ParallaxScrollView>
+			<View style={styles.titleContainer}>
+				<View style={styles.titleContainer}>
+					<ThemedText
+						type="title"
+						style={styles.title}
+					>
+						Caracal Fitness
+					</ThemedText>
+				</View>
+			</View>
+			{activePage === "login" ? (
+				<Login setActivePage={setActivePage} />
+			) : (
+				<Register setActivePage={setActivePage} />
+			)}
+		</ThemedView>
 	);
 }
 
 const styles = StyleSheet.create({
-	headerImage: {
-		color: "#808080",
-		bottom: -90,
-		left: -35,
-		position: "absolute",
+	container: {
+		paddingTop: 30,
 	},
 	titleContainer: {
-		flexDirection: "row",
-		gap: 8,
+		marginTop: 5,
+		marginBottom: 20,
+		alignItems: "center",
+	},
+	title: {
+		paddingTop: 20,
+		fontSize: 40,
+		textAlign: "center",
+		fontFamily: "Lato-Bold",
 	},
 });
