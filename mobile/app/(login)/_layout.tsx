@@ -6,12 +6,11 @@ export default function LoginLayout() {
 		<Stack
 			screenOptions={{
 				headerShown: false,
-				gestureEnabled: false,
+				// gestureEnabled: false,
 				animation: "slide_from_bottom",
 			}}
 		>
 			<Stack.Screen name="index" />
-			<Stack.Screen name="register" />
 			<Stack.Screen name="login" />
 		</Stack>
 	);
