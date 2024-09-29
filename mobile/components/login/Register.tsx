@@ -150,21 +150,10 @@ export default function Register({ setActivePage }: RegisterProps) {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		// flex: 1,
-		// alignItems: "center",
-		paddingTop: 30,
-	},
 	titleContainer: {
 		marginTop: 5,
 		marginBottom: 20,
 		alignItems: "center",
-	},
-	title: {
-		paddingTop: 20,
-		fontSize: 40,
-		textAlign: "center",
-		fontFamily: "Lato-Bold",
 	},
 	formTitleContainer: {
 		alignItems: "center",
