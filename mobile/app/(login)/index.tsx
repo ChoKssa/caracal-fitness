@@ -1,3 +1,4 @@
+import { useLanguage } from "@/hooks/useLanguage";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import {
@@ -13,6 +14,8 @@ import {
 const { width, height } = Dimensions.get("window");
 
 export default function WelcomeScreen() {
+	const { t } = useLanguage();
+
 	return (
 		<View style={styles.container}>
 			<ImageBackground
@@ -35,17 +38,17 @@ export default function WelcomeScreen() {
 					</View>
 
 					<View style={styles.textContainer}>
-						<Text style={styles.title}>Ultimate Training</Text>
-						<Text style={styles.subtitle}>
-							Your Program Everywhere Anytime
-						</Text>
+						<Text style={styles.title}>Caracal Fitness</Text>
+						<Text style={styles.subtitle}>{t("welcome.slug")}</Text>
 					</View>
 
 					<TouchableOpacity
 						style={styles.button}
 						onPress={(e) => router.navigate("/(login)/login")}
 					>
-						<Text style={styles.buttonText}>Get Started</Text>
+						<Text style={styles.buttonText}>
+							{t("welcome.get_started")}
+						</Text>
 					</TouchableOpacity>
 				</View>
 			</ImageBackground>
