@@ -1,8 +1,8 @@
 import { Dimensions, StyleSheet, View } from "react-native";
 
 import { useState } from "react";
-import Login from "@/components/navigation/Login";
-import Register from "@/components/navigation/Register";
+import Login from "@/components/login/Login";
+import Register from "@/components/login/Register";
 import { ThemedView } from "@/components/ui/ThemedView";
 import { ThemedText } from "@/components/ui/ThemedText";
 
