@@ -8,14 +8,14 @@ type TranslationContextType = {
 };
 
 export const TranslationContext = createContext<TranslationContextType>({
-	locale: "en",
+	locale: "eng",
 	changeLanguage: () => {},
 });
 
 export const TranslationProvider: FC<{ children: ReactNode }> = ({
 	children,
 }) => {
-	const [locale, setLocale] = useState(i18next.language || "en");
+	const [locale, setLocale] = useState(i18next.languages[0] || "eng");
 
 	const changeLanguage = async (locale: string) => {
 		setLocale(locale);
