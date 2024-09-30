@@ -8,6 +8,9 @@ import { CheckBox } from "@/components/ui/CheckBox";
 import AuthProviders from "@/components/login/AuthProviders";
 import { Colors } from "@/constants/Colors";
 import { useEffect, useState } from "react";
+import CountryPicker from "../CountryPicker";
+import CountryList from "../CountryList";
+import { CountryWithFlag } from "@/types/countries";
 
 const { width } = Dimensions.get("window");
 
@@ -19,23 +22,31 @@ export default function Register({ setActivePage }: RegisterProps) {
 	const [validForm, setValidForm] = useState(false);
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
-	const [country, setCountry] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [rePassword, setRePassword] = useState("");
 	const [staySigned, setStaySigned] = useState(false);
+	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [pickedCountry, setPickedCountry] = useState<CountryWithFlag>();
+
+	const onModalClose = () => {
+		setIsModalVisible(false);
+	};
+
+	useEffect(() => {
+		console.log("Picked country: ", pickedCountry);
+	}, [pickedCountry]);
 
 	useEffect(() => {
 		const isValid =
 			firstName.length > 0 &&
 			lastName.length > 0 &&
-			country.length > 0 &&
 			email.includes("@") &&
 			password.length >= 6 &&
 			password === rePassword;
 
 		setValidForm(isValid);
-	}, [firstName, lastName, country, email, password, rePassword]);
+	}, [firstName, lastName, email, password, rePassword]);
 
 	return (
 		<View style={styles.formContainer}>
@@ -69,10 +80,24 @@ export default function Register({ setActivePage }: RegisterProps) {
 				</View>
 				<ThemedInput
 					placeholder="Country"
-					textContentType="countryName"
-					value={country}
-					onChangeText={setCountry}
+					value={
+						pickedCountry
+							? `${pickedCountry?.info.flag} ${pickedCountry?.info.name.common}`
+							: ""
+					}
+					readOnly
+					onPress={() => setIsModalVisible(true)}
 				/>
+
+				<CountryPicker
+					isVisible={isModalVisible}
+					onClose={onModalClose}
+				>
+					<CountryList
+						onSelect={setPickedCountry}
+						onCloseModal={onModalClose}
+					/>
+				</CountryPicker>
 				<ThemedInput
 					placeholder="Email"
 					textContentType="emailAddress"
