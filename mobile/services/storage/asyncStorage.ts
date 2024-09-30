@@ -25,5 +25,17 @@ export const AsyncStorageService = {
             }
 
         }
+    },
+
+    clear: async (callback?: Callback) => {
+        try {
+            await AsyncStorage.clear(callback);
+        } catch (error) {
+            console.error(`AsyncStorage error clear: ${error}`);
+
+            if (callback) {
+                callback(error as Error | null);
+            }
+        }
     }
 };
