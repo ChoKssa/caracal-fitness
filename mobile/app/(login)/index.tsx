@@ -19,7 +19,7 @@ export default function WelcomeScreen() {
 	return (
 		<View style={styles.container}>
 			<ImageBackground
-				source={require("@/assets/images/welcome_screen.webp")}
+				source={require("@/assets/images/welcome_screen2.png")}
 				style={styles.backgroundImage}
 				resizeMode="cover"
 			>
