@@ -10,7 +10,7 @@ export default function LoginLayout() {
 				animation: "slide_from_bottom",
 			}}
 		>
-			<Stack.Screen name="index" />
+			<Stack.Screen name="welcome" />
 			<Stack.Screen name="login" />
 		</Stack>
 	);
