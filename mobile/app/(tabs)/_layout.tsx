@@ -1,25 +1,42 @@
 import { Tabs } from "expo-router";
-import { Colors } from "@/constants/Colors";
+import { TabBar } from "@/components/TabBar";
 
 const TabLayout = () => {
 	return (
 		<Tabs
+			tabBar={(props) => <TabBar {...props} />}
 			screenOptions={{
-				tabBarActiveTintColor: Colors.common.primary_green,
-				tabBarInactiveTintColor: Colors.common.blue_light,
-				tabBarActiveBackgroundColor: Colors.common.gray_dark,
-				tabBarShowLabel: false,
-				tabBarStyle: {
-					backgroundColor: Colors.common.gray_dark,
-					height: 84,
-				},
+				headerShown: false,
 			}}
 		>
 			<Tabs.Screen
 				name="home"
 				options={{
 					title: "Home",
-					headerShown: false,
+				}}
+			/>
+			<Tabs.Screen
+				name="analytics"
+				options={{
+					title: "Analytics",
+				}}
+			/>
+			<Tabs.Screen
+				name="coaches"
+				options={{
+					title: "Coaches",
+				}}
+			/>
+			<Tabs.Screen
+				name="chat"
+				options={{
+					title: "Chat",
+				}}
+			/>
+			<Tabs.Screen
+				name="profile"
+				options={{
+					title: "Profile",
 				}}
 			/>
 		</Tabs>
