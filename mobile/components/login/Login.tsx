@@ -8,6 +8,7 @@ import { CheckBox } from "@/components/ui/CheckBox";
 import { ThemedButton } from "@/components/ui/ThemedButton";
 import { TextDivider } from "../ui/TextDivider";
 import AuthProviders from "../login/AuthProviders";
+import { router } from "expo-router";
 
 const { width } = Dimensions.get("window");
 
@@ -84,7 +85,7 @@ export default function Login({ setActivePage }: LoginProps) {
 				<ThemedButton
 					label="Log In"
 					disabled={!validForm}
-					onPress={(e) => console.log("Register button pressed")}
+					onPress={(e) => router.push("/(tabs)/home")}
 					style={{
 						width: width * 0.8,
 						borderRadius: 18,

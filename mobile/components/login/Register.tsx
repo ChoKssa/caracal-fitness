@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import CountryPicker from "../CountryPicker";
 import CountryList from "../CountryList";
 import { CountryWithFlag } from "@/types/countries";
+import { router } from "expo-router";
 
 const { width } = Dimensions.get("window");
 
@@ -141,7 +142,7 @@ export default function Register({ setActivePage }: RegisterProps) {
 				<ThemedButton
 					label="Sign up"
 					disabled={!validForm}
-					onPress={(e) => console.log("Register button pressed")}
+					onPress={(e) => router.push("/(tabs)/home")}
 					style={{
 						width: width * 0.8,
 						borderRadius: 18,
