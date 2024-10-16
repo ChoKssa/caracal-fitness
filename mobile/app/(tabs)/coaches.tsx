@@ -2,14 +2,14 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemedView } from "@/components/ui/ThemedView";
 import { ThemedText } from "@/components/ui/ThemedText";
 
-const Home = () => {
+const Coaches = () => {
 	const insets = useSafeAreaInsets();
 
 	return (
 		<ThemedView style={{ height: "100%", paddingTop: insets.top }}>
-			<ThemedText>Home</ThemedText>
+			<ThemedText>Coaches</ThemedText>
 		</ThemedView>
 	);
 };
 
-export default Home;
+export default Coaches;

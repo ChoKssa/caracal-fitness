@@ -32,5 +32,7 @@ export const Colors = {
     red: '#ED4747',
     orange: '#FCC46F',
     blue_light: '#95CCE3',
+    black: '#000',
+    white: '#fff',
   }
 };
